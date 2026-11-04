@@ -53,6 +53,9 @@ app.get("/api/users", (req, res) => {
 });
 
 app.get("/health", (_, res) => res.send("ok"));
-app.use(express.static(path.join(__dirname, "public")));
+const PUB = path.join(__dirname, "public");
+app.use(express.static(PUB));
+app.get("/", (_, res) => res.sendFile(path.join(PUB, "index.html")));
 
-app.listen(PORT, () => console.log("AyzIY site running on port " + PORT));
+if (!process.env.VERCEL) app.listen(PORT, () => console.log("AyzIY site running on port " + PORT));
+module.exports = app; // lets Vercel run it too
