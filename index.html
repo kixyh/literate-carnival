@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AyzIY – Get your key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#09080f;--surface:rgba(255,255,255,.04);--line:rgba(255,255,255,.09);--text:#f3f1fb;--muted:#9d98b8;
+  --accent:#824aff;--accent2:#50c8ff;--win:#17151f;--wintext:#f2f2f6;--winmuted:#8f8ca3;
+  color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;font-size:17px;overflow-x:hidden;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(60% 50% at 15% 0%,color-mix(in srgb,var(--accent) 38%,transparent),transparent 70%),
+  radial-gradient(50% 45% at 90% 10%,color-mix(in srgb,var(--accent2) 26%,transparent),transparent 70%),var(--bg);transition:background .5s}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.5;-webkit-mask-image:radial-gradient(70% 55% at 50% 0%,#000,transparent);mask-image:radial-gradient(70% 55% at 50% 0%,#000,transparent)}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.025em}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-block;box-shadow:0 0 24px color-mix(in srgb,var(--accent) 70%,transparent)}
+.navlinks{display:flex;align-items:center;gap:6px;padding:5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+nav a.link{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:999px;transition:.2s}
+nav a.link:hover{color:var(--text);background:rgba(255,255,255,.08)}
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:center;padding:64px 0 88px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:5px 12px 5px 8px;border-radius:999px;margin-bottom:22px}
+.pill b{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 #4ade80aa;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px #4ade8000}100%{box-shadow:0 0 0 0 #4ade8000}}
+.hero h1{font-size:clamp(42px,6.4vw,74px);font-weight:800}
+.grad{background:linear-gradient(100deg,var(--accent),var(--accent2) 60%,var(--accent));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.hero p{color:var(--muted);max-width:44ch;margin:24px 0 32px;font-size:19px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 24px;border-radius:12px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid var(--line);background:var(--surface);transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 10px 34px -8px color-mix(in srgb,var(--accent) 80%,transparent)}
+.btn.primary:hover{box-shadow:0 14px 44px -6px color-mix(in srgb,var(--accent) 90%,transparent)}
+.btn:focus-visible,input:focus-visible,.sw:focus-visible,.row:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.stats{display:flex;gap:28px;margin-top:38px;flex-wrap:wrap}
+.stats div{font-size:13px;color:var(--muted);line-height:1.3}
+.stats b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:28px;color:var(--text);letter-spacing:-.02em}
+/* demo window */
+.stage{position:relative}
+.stage::before{content:"";position:absolute;inset:-30px;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 45%,transparent),transparent);filter:blur(30px);z-index:-1;opacity:.7;transition:background .5s}
+.win{background:var(--win);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;color:var(--wintext);box-shadow:0 40px 90px -30px #000,0 0 0 1px rgba(255,255,255,.03) inset;transform:perspective(1400px) rotateY(-4deg) rotateX(2deg);transition:transform .5s}
+.win:hover,.win:focus-within{transform:none}
+.win .bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:rgba(255,255,255,.04);border-bottom:2px solid var(--accent);font-size:14px;transition:border-color .3s}
+.win .bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.win .bar i:nth-child(2){background:#febc2e}.win .bar i:nth-child(3){background:#28c840}
+.win .bar b{font-weight:500;margin-left:8px;flex:1}
+.win .bar span{color:var(--winmuted);font-size:12px;font-family:"JetBrains Mono",monospace}
+.cmdin{margin:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.06);border-radius:10px;display:flex;align-items:center;padding:0 12px;transition:border-color .25s,box-shadow .25s;gap:8px}
+.cmdin:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.cmdin::before{content:";";font-family:"JetBrains Mono",monospace;color:var(--accent);font-weight:500}
+.cmdin input{flex:1;background:none;border:0;color:var(--wintext);font:inherit;font-family:"JetBrains Mono",monospace;font-size:15px;padding:11px 0;min-width:0;outline:none}
+.list{height:250px;overflow-y:auto;padding:0 10px 12px;scrollbar-color:var(--accent) transparent;scrollbar-width:thin}
+.row{display:flex;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-left:2px solid transparent;border-radius:6px;color:var(--wintext);font-family:"JetBrains Mono",monospace;font-size:14px;padding:6px 10px;cursor:pointer;transition:padding .2s,background .15s,border-color .15s}
+.row:hover,.row.on{background:rgba(255,255,255,.07);padding-left:16px;border-left-color:var(--accent)}
+.row small{color:var(--winmuted);margin-left:auto;padding-left:14px;font-family:"Instrument Sans",sans-serif;font-size:13px;text-align:right}
+.toast{position:absolute;right:14px;bottom:14px;background:#1f1d29;border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--accent);padding:9px 14px;border-radius:10px;font-size:14px;transform:translateY(20px);opacity:0;transition:.35s;pointer-events:none;max-width:75%;box-shadow:0 12px 30px -10px #000}
+.toast.show{transform:none;opacity:1}
+.hint{margin:16px 2px 0;font-size:14px;color:var(--muted);text-align:center}
+.hint b{color:var(--text);font-family:"JetBrains Mono",monospace;font-weight:500}
+/* sections */
+section{padding:84px 0}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:14px}
+section h2{font-size:clamp(32px,4.4vw,50px);font-weight:700;max-width:18ch}
+section .lede{color:var(--muted);max-width:52ch;margin:18px 0 0}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.g{position:relative;padding:26px;border:1px solid var(--line);border-radius:20px;background:var(--surface);overflow:hidden;transition:transform .25s,border-color .25s}
+.g::before{content:"";position:absolute;inset:0;background:radial-gradient(300px circle at 100% 0%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 60%);opacity:0;transition:opacity .3s}
+.g:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+.g:hover::before{opacity:1}
+.g>*{position:relative}
+.ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 35%,transparent),color-mix(in srgb,var(--accent2) 25%,transparent));border:1px solid var(--line)}
+.ic svg{width:22px;height:22px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.g h3{font-size:22px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.g h3 em{font-style:normal;font-size:13px;color:var(--text);font-family:"JetBrains Mono",monospace;font-weight:500;background:rgba(255,255,255,.08);padding:3px 10px;border-radius:999px}
+.g p{color:var(--muted);font-size:15px;margin:10px 0 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.panel{border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:28px}
+.themes{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.sw{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font:inherit;font-size:15px;border-radius:999px;padding:9px 18px 9px 11px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.2s}
+.sw:hover{background:rgba(255,255,255,.09)}
+.sw i{width:20px;height:20px;border-radius:50%;display:inline-block;box-shadow:0 0 12px currentColor}
+.sw[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 24px -4px var(--accent)}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;padding:0 0 26px 58px;position:relative;color:var(--muted)}
+ol.steps li:not(:last-child)::after{content:"";position:absolute;left:19px;top:44px;bottom:6px;width:1px;background:linear-gradient(var(--accent),transparent)}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;font-weight:700;font-size:16px;font-family:"Bricolage Grotesque",sans-serif}
+ol.steps li b{color:var(--text);display:block;font-weight:600;font-size:18px}
+kbd{background:rgba(255,255,255,.08);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:1px 8px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text)}
+.cta{margin:20px 0 0;text-align:center;padding:64px 24px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 22%,transparent),color-mix(in srgb,var(--accent2) 14%,transparent));position:relative;overflow:hidden}
+.cta h2{max-width:none;font-size:clamp(30px,4.4vw,52px)}
+.cta p{color:var(--muted);margin:14px auto 28px;max-width:46ch}
+footer{border-top:1px solid var(--line);margin-top:70px;padding:28px 0 40px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .hero,.split{grid-template-columns:1fr;gap:40px}
+  .groups{grid-template-columns:1fr 1fr}
+  .win{transform:none}
+}
+@media (max-width:540px){.groups{grid-template-columns:1fr}.navlinks{display:none}.hero{padding-top:36px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+.keycard{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:26px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 40px 90px -30px #000}
+.keycard::before{content:"";position:absolute;inset:-30px;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 40%,transparent),transparent);filter:blur(34px);z-index:-1;opacity:.7}
+.kh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.kh h3{font-size:24px}.kh span{font:500 12px "JetBrains Mono",monospace;color:var(--muted)}
+.prog{height:6px;border-radius:9px;background:rgba(255,255,255,.08);margin:14px 0 18px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .5s}
+.cp{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);margin-bottom:10px;transition:.25s}
+.cp .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:700;background:rgba(255,255,255,.08);flex:none}
+.cp div{flex:1;min-width:0;line-height:1.3}.cp b{display:block;font-weight:600;font-size:16px}.cp small{color:var(--muted);font-size:13px}
+.cp button{font:600 14px inherit;font-family:inherit;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--text);padding:8px 16px;border-radius:9px;cursor:pointer;min-width:84px;transition:.2s}
+.cp button:hover:not(:disabled){background:var(--accent);border-color:transparent}
+.cp.locked{opacity:.45}.cp.locked button{cursor:not-allowed}
+.cp.done{border-color:#4ade8066;background:#4ade8010}.cp.done .n{background:#4ade80;color:#06210f}.cp.done button{background:none;border-color:transparent;color:#4ade80;cursor:default}
+.gen{width:100%;margin-top:6px;border:0;cursor:pointer;font-family:inherit}
+.gen:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.keybox{display:none;margin-top:6px}
+.keybox.on{display:block;animation:pop .45s}
+@keyframes pop{from{transform:scale(.96);opacity:0}}
+.keyval{display:flex;gap:8px;align-items:center;padding:6px 6px 6px 16px;border:1px solid var(--accent);border-radius:12px;background:rgba(0,0,0,.35);box-shadow:0 0 26px -6px var(--accent)}
+.keyval code{flex:1;font:500 16px "JetBrains Mono",monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all}
+.keyval button{border:0;border-radius:8px;padding:10px 16px;font:600 14px inherit;font-family:inherit;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));cursor:pointer}
+.kmeta{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:var(--muted)}
+.kmeta a{color:var(--muted);cursor:pointer}.kmeta a:hover{color:var(--text)}
+.code{margin-top:22px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.35);padding:16px 18px;font:400 13px/1.7 "JetBrains Mono",monospace;color:#cfc9ea;overflow-x:auto;white-space:pre}
+.code .k{color:var(--accent2)}.code .s{color:#8ef0a8}
+.demo{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+@media (max-width:860px){.demo{grid-template-columns:1fr;gap:36px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <a class="logo" href="#top"><i></i>AyzIY</a>
+  <div class="navlinks"><a class="link" href="#getkey">Get Key</a><a class="link" href="#commands">Commands</a><a class="link" href="#preview">Preview</a><a class="link" href="#install">Install</a></div>
+</nav>
+
+<header class="hero" id="top">
+  <div>
+    <div class="pill"><b></b>Free · keys last 24 hours</div>
+    <h1>Unlock AyzIY with a <span class="grad">free key.</span></h1>
+    <p>Finish three quick checkpoints, generate your key, paste it into the script and you're in. No account, no payment.</p>
+    <div class="btns"><a class="btn primary" href="#getkey">Get my key</a><a class="btn" href="#install">How it works</a></div>
+    <div class="stats"><div><b>90</b>commands</div><div><b>3</b>checkpoints</div><div><b>24h</b>per key</div></div>
+  </div>
+  <div id="getkey">
+    <div class="keycard">
+      <div class="kh"><h3>Get your key</h3><span id="pct">0 / 3</span></div>
+      <div class="prog"><i id="bar"></i></div>
+      <div id="cps"></div>
+      <button class="btn primary gen" id="gen" disabled>Generate key</button>
+      <div class="keybox" id="kb">
+        <div class="keyval"><code id="kv"></code><button id="cp">Copy</button></div>
+        <div class="kmeta"><span>Expires in <b id="exp"></b></span><a id="rs">Reset</a></div>
+      </div>
+    </div>
+  </div>
+</header>
+</div>
+
+<section id="commands"><div class="wrap">
+  <div class="rv"><div class="eyebrow">Commands</div>
+  <h2>Everything sits behind one prefix.</h2>
+  <p class="lede">Every command has short aliases and a tooltip, and the list filters as you type. Change the prefix in settings if <kbd>;</kbd> is taken.</p></div>
+  <div class="groups">
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Movement <em>35</em></h3><p>fly, noclip, speed, infjump, bhop, spin, float, follow, tpwalk</p></div>
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3>Teleport <em>11</em></h3><p>goto, tp, waypoints, click teleport, click delete</p></div>
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/></svg></div><h3>Camera <em>8</em></h3><p>fov, spectate players, zoom limits, shift lock, camera reset</p></div>
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.5 3.6-7 8-7s8 2.5 8 7"/></svg></div><h3>Character <em>10</em></h3><p>heal, god, respawn, rejoin, equip or drop all tools</p></div>
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Visuals <em>14</em></h3><p>esp, x-ray, fullbright, no fog, time of day, hide the core UI</p></div>
+    <div class="g rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.4 2.4-2.6-.6-.6-2.6z"/></svg></div><h3>Utility <em>12</em></h3><p>anti-AFK, fps, ping, say, player list, notifications, sounds</p></div>
+  </div>
+</div></section>
+
+<section id="preview"><div class="wrap demo">
+  <div>
+    <div class="stage">
+      <div class="win" id="win">
+        <div class="bar"><i></i><i></i><i></i><b>AyzIY v1.0</b><span>live demo</span></div>
+        <div class="cmdin"><input id="q" type="text" placeholder="Command Bar" autocomplete="off" spellcheck="false" aria-label="Try a command"></div>
+        <div class="list" id="list"></div>
+      </div>
+      <div class="toast" id="toast"></div>
+    </div>
+    <p class="hint">Try it. Type <b>fly</b>, <b>esp</b> or <b>night</b> and press Enter.</p>
+  </div>
+  <div class="rv">
+    <div class="eyebrow">Preview</div>
+    <h2>See what the key unlocks.</h2>
+    <p class="lede">The full command bar, all 90 commands, UI sounds and four themes. Pick one and the whole page follows.</p>
+    <div class="themes" id="themes"></div>
+  </div>
+</div></section>
+
+<section id="install"><div class="wrap split">
+  <div class="rv">
+    <div class="eyebrow">Install</div>
+    <h2>Key in, script on.</h2>
+    <p class="lede">Generate your key above, then run the script in any place you can edit. It asks for the key once per session.</p>
+  </div>
+  <div class="rv">
+  <ol class="steps">
+    <li><b>Get your key</b>Complete the checkpoints and copy the generated key.</li>
+    <li><b>Paste it in the script</b>Set the key at the top of your LocalScript and press Play.</li>
+    <li><b>Press <kbd>;</kbd></b>Type a command and hit Enter. Keys last 24 hours.</li>
+  </ol>
+  <div class="code"><span class="k">-- Paste the script into a LocalScript in StarterPlayerScripts</span>
+<span class="k">-- Press Play, then paste your key into the prompt</span></div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="cta rv"><h2>Ready to take control?</h2><p>Three checkpoints. One key. Ninety commands.</p><a class="btn primary" href="#getkey">Get my key</a></div>
+  <footer><span>AyzIY v1.0</span><span>Not affiliated with Roblox Corporation.</span></footer>
+</div>
+
+<script>
+(function(){
+var CMDS=[["fly [speed]","Fly with WASD, Q and E"],["noclip","Walk through walls"],["speed [n]","Set walk speed"],["infjump","Jump infinitely"],["bhop","Jump while moving"],["spin [speed]","Spin your character"],["float","Hover in place"],["follow [player]","Follow a player"],["goto [player]","Teleport to a player"],["tp [x] [y] [z]","Teleport to coordinates"],["swp [name]","Save a waypoint"],["clicktp","Ctrl and click to teleport"],["fov [n]","Set field of view"],["view [player]","Spectate a player"],["heal","Restore full health"],["god","Huge health, client side"],["rejoin","Rejoin this server"],["esp","Highlight other players"],["xray","See through walls"],["fullbright","Max brightness"],["night","Set time to night"],["day","Set time to day"],["antiafk","Prevent AFK kick"],["fps","Show your FPS"],["sounds","Toggle UI sounds"],["theme","Cycle the theme"]];
+var THEMES=[["Dark","#824aff","#50c8ff"],["Violet","#be8cff","#ff7ad9"],["Ocean","#2fa8ff","#4df0d0"],["Forest","#3ddc84","#d4f25a"]];
+var q=document.getElementById("q"),list=document.getElementById("list"),toast=document.getElementById("toast"),root=document.documentElement,tt;
+function say(t){toast.textContent=t;toast.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove("show")},2200)}
+function draw(){
+  var f=q.value.trim().toLowerCase().split(/\s+/)[0]||"";list.innerHTML="";
+  CMDS.filter(function(c){return c[0].indexOf(f)===0||c[0].split(" ")[0].indexOf(f)===0}).forEach(function(c){
+    var b=document.createElement("button");b.className="row";b.type="button";
+    b.innerHTML="<span></span><small></small>";b.firstChild.textContent=c[0];b.lastChild.textContent=c[1];
+    b.onclick=function(){q.value=c[0].split(" ")[0]+" ";q.focus();draw()};
+    list.appendChild(b)});
+  if(!list.children.length){list.innerHTML='<p style="color:#8f8ca3;padding:6px 8px;margin:0">No command starts with “'+f.replace(/[<>&]/g,"")+'”.</p>'}
+}
+function run(){
+  var n=q.value.trim().split(/\s+/)[0].toLowerCase(),c=CMDS.filter(function(x){return x[0].split(" ")[0]===n})[0];
+  if(!n)return;
+  if(c){say(c[0].split(" ")[0]+": "+c[1]);if(n==="theme"){setTheme((cur+1)%THEMES.length)}}
+  else say("Unknown command: "+n.replace(/[<>&]/g,""));
+  q.value="";draw()
+}
+q.addEventListener("input",draw);
+q.addEventListener("keydown",function(e){if(e.key==="Enter")run()});
+var cur=0,box=document.getElementById("themes");
+function setTheme(i){cur=i;root.style.setProperty("--accent",THEMES[i][1]);root.style.setProperty("--accent2",THEMES[i][2]);
+  [].forEach.call(box.children,function(b,j){b.setAttribute("aria-pressed",j===i)})}
+THEMES.forEach(function(t,i){
+  var b=document.createElement("button");b.className="sw";b.type="button";
+  b.innerHTML='<i style="color:'+t[1]+';background:linear-gradient(135deg,'+t[1]+','+t[2]+')"></i>'+t[0];
+  b.onclick=function(){setTheme(i);say("Theme: "+t[0])};
+  box.appendChild(b)});
+setTheme(0);draw();
+/* scroll reveal */
+var rv=[].slice.call(document.querySelectorAll(".rv"));
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});rv.forEach(function(el,i){el.style.transitionDelay=(i%3)*80+"ms";io.observe(el)})}else{rv.forEach(function(el){el.classList.add("in")})}
+/* opening moment: type a demo command, then hand over to the visitor */
+var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){var s="fly 80",i=0,iv=setInterval(function(){
+  if(q.value!==s.slice(0,i-1)&&i>0){clearInterval(iv);return}
+  q.value=s.slice(0,i++);draw();
+  if(i>s.length){clearInterval(iv);setTimeout(function(){if(q.value===s){run()}},700)}},170)}
+})();
+</script>
+<script>
+/* key system */
+(function(){
+/* EDIT: put your real checkpoint links here */
+var STEPS=[["Join our Discord","Opens in a new tab","https://discord.gg/your-invite"],["Visit the sponsor page","Stay for 5 seconds","https://example.com/checkpoint-2"],["Final checkpoint","Almost there","https://example.com/checkpoint-3"]];
+/* EDIT: must match SECRET in AyzIY.lua */
+var SECRET="CHANGE_ME_SECRET",AL="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",HOURS=24,SK="ayziy_key_v1",done=[],cps=document.getElementById("cps"),gen=document.getElementById("gen"),kb=document.getElementById("kb"),kv=document.getElementById("kv"),exp=document.getElementById("exp"),tm;
+function ld(){try{return JSON.parse(localStorage.getItem(SK))}catch(e){return null}}
+function sv(o){try{localStorage.setItem(SK,JSON.stringify(o))}catch(e){}}
+function hs(x){var h=5381;for(var i=0;i<x.length;i++)h=(h*131+x.charCodeAt(i))%4294967291;return h}
+function en(n,l){var o="";for(var i=0;i<l;i++){o=AL[n%32]+o;n=Math.floor(n/32)}return o}
+function mk(){var eh=Math.floor(Date.now()/36e5)+HOURS,r=new Uint8Array(3),nc="",i;
+  if(window.crypto&&crypto.getRandomValues)crypto.getRandomValues(r);else for(i=0;i<3;i++)r[i]=Math.random()*256;
+  for(i=0;i<3;i++)nc+=AL[r[i]%32];
+  var b=en(eh,5)+nc,k=b+en(hs(SECRET+b)%1048576,4);
+  return "AYZ-"+k.slice(0,4)+"-"+k.slice(4,8)+"-"+k.slice(8)}
+function upd(){var n=done.filter(Boolean).length;document.getElementById("bar").style.width=n/STEPS.length*100+"%";document.getElementById("pct").textContent=n+" / "+STEPS.length;
+  [].forEach.call(cps.children,function(el,i){var d=done[i],lock=!d&&i>0&&!done[i-1];el.className="cp"+(d?" done":"")+(lock?" locked":"");var b=el.querySelector("button");b.disabled=d||lock;if(d)b.textContent="Done ✓"});
+  gen.disabled=n<STEPS.length}
+function show(o){kv.textContent=o.key;kb.classList.add("on");gen.style.display="none";clearInterval(tm);
+  function t(){var ms=o.exp-Date.now();if(ms<=0){reset();return}var h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4),s=Math.floor(ms%6e4/1e3);exp.textContent=h+"h "+m+"m "+s+"s"}t();tm=setInterval(t,1000)}
+function reset(){clearInterval(tm);try{localStorage.removeItem(SK)}catch(e){}done=STEPS.map(function(){return false});kb.classList.remove("on");gen.style.display="";upd()}
+STEPS.forEach(function(s,i){done[i]=false;var el=document.createElement("div");
+  el.innerHTML='<span class="n">'+(i+1)+'</span><div><b></b><small></small></div><button type="button">Start</button>';
+  el.querySelector("b").textContent=s[0];el.querySelector("small").textContent=s[1];
+  var b=el.querySelector("button");b.onclick=function(){window.open(s[2],"_blank","noopener");var t=5;b.disabled=true;var iv=setInterval(function(){b.textContent=t>0?t+"s":"";if(t--<=0){clearInterval(iv);done[i]=true;upd()}},1000);b.textContent="5s"};
+  cps.appendChild(el)});
+gen.onclick=function(){var o={key:mk(),exp:Date.now()+HOURS*36e5};sv(o);show(o)};
+document.getElementById("cp").onclick=function(){var b=this;function ok(){b.textContent="Copied!";setTimeout(function(){b.textContent="Copy"},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(kv.textContent).then(ok,function(){})}else{var r=document.createRange();r.selectNodeContents(kv);var x=getSelection();x.removeAllRanges();x.addRange(r);try{document.execCommand("copy");ok()}catch(e){}}};
+document.getElementById("rs").onclick=reset;
+var o=ld();if(o&&o.exp>Date.now()){done=STEPS.map(function(){return true});upd();show(o)}else upd();
+})();
+</script>
+</body>
+</html>
